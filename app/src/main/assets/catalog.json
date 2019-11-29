@@ -1,0 +1,50 @@
+[
+  {
+    "uid": 1,
+    "name": "Microwave oven",
+    "image": "",
+    "description": "",
+    "price": 3000,
+    "category": "Electronics"
+  },
+  {
+    "uid": 2,
+    "name": "Telvision",
+    "image": "",
+    "description": "",
+    "price": 5000,
+    "category": "Electronics"
+  },
+  {
+    "uid": 3,
+    "name": "Vaccum Cleaner",
+    "image": "",
+    "description": "",
+    "price": 4000,
+    "category": "Electronics"
+  },
+  {
+    "uid": 4,
+    "name": "Table",
+    "image": "",
+    "description": "",
+    "price": 500,
+    "category": "Furniture"
+  },
+  {
+    "uid": 5,
+    "name": "Chair",
+    "image": "",
+    "description": "",
+    "price": 1000,
+    "category": "Furniture"
+  },
+  {
+    "uid": 6,
+    "name": "Almirah",
+    "image": "",
+    "description": "",
+    "price": 1000,
+    "category": "Furniture"
+  }
+]
