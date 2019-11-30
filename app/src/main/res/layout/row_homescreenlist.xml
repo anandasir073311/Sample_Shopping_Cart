@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/menu_item_height"
+    android:paddingStart="@dimen/homescreen_padding"
+    android:paddingEnd="@dimen/homescreen_padding"
+    android:background="?android:attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    >
+
+    <TextView
+        android:id="@+id/menuTvName"
+        android:textSize="@dimen/textsize_medium"
+        android:textColor="@color/textColorSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/menu_item_padding"
+        android:layout_marginLeft="@dimen/menu_item_padding"
+        android:layout_marginEnd="@dimen/menu_item_padding"
+        android:layout_marginRight="@dimen/menu_item_padding"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:textStyle="normal" />
+</RelativeLayout>

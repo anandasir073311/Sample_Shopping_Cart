@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="toolbar_textsize">20sp</dimen>
+    <dimen name="homescreen_textsize">300sp</dimen>
+    <dimen name="homescreen_margin">24sp</dimen>
+    <dimen name="homescreen_padding">24sp</dimen>
+
+    <dimen name="textsize_large">20sp</dimen>
+    <dimen name="textsize_medium">18sp</dimen>
+    <dimen name="textsize_small">15sp</dimen>
+
+    <dimen name="circularview_border">5sp</dimen>
+    <dimen name="circularview_width">70sp</dimen>
+    <dimen name="circularview_height">70sp</dimen>
+
+    <dimen name="menu_item_height">40sp</dimen>
+    <dimen name="menu_item_padding">5sp</dimen>
+    <dimen name="menu_icon_size">15sp</dimen>
+</resources>
