@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
 
                 <fragment
                     android:id="@+id/homescreen_fragment"
-                    android:name="com.finserv.shopping_cart.HomescreenListFragment"
+                    android:name="com.finserv.shopping_cart.view.HomescreenListFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 

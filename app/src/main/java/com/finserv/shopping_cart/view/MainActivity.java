@@ -1,8 +1,10 @@
-package com.finserv.shopping_cart;
+package com.finserv.shopping_cart.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.finserv.shopping_cart.R;
 
 public class MainActivity extends AppCompatActivity {
 

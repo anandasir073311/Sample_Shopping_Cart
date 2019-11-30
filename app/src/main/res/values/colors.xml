@@ -7,4 +7,6 @@
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="textColorSecondary">#000000</color>
     <color name="light_gray">#c6c6c6</color>
+
+    <color name="CardBackgroundColor">#FFFFFF</color>
 </resources>

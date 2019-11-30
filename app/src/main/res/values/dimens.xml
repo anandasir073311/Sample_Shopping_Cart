@@ -17,4 +17,7 @@
     <dimen name="menu_item_height">40sp</dimen>
     <dimen name="menu_item_padding">5sp</dimen>
     <dimen name="menu_icon_size">15sp</dimen>
+
+    <dimen name="cardview_width">250sp</dimen>
+    <dimen name="cardview_height">250sp</dimen>
 </resources>

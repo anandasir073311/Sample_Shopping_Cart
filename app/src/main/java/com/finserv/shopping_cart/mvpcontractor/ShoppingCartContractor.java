@@ -1,4 +1,4 @@
-package com.finserv.shopping_cart;
+package com.finserv.shopping_cart.mvpcontractor;
 
 import com.finserv.shopping_cart.bo.ProductMasterBO;
 
@@ -8,6 +8,7 @@ public interface ShoppingCartContractor {
 
     interface ShoppingCartPresenter {
         void setView(ShoppingCartView shoppingCartView);
+        void parseandInsertProducts(String json);
         void fetchProductList(ArrayList<ProductMasterBO> productList);
         void fetchProductInfo(String productID);
     }
