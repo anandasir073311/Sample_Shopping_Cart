@@ -1,7 +1,18 @@
 package com.finserv.shopping_cart.bo;
 
 public class ProductMasterBO {
+
     private String uid, name, description, image, category;
+    private int price;
+
+    public ProductMasterBO(String uid, String name, String description, String image, int price, String category){
+        this.uid = uid;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.price = price;
+        this.category = category;
+    }
 
     public String getUid() {
         return uid;
@@ -41,5 +52,13 @@ public class ProductMasterBO {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

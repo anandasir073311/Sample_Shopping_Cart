@@ -1,9 +1,12 @@
 package com.finserv.shopping_cart.presenter;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.util.Log;
 
+import com.finserv.shopping_cart.R;
 import com.finserv.shopping_cart.bo.ProductMasterBO;
+import com.finserv.shopping_cart.db.DBUtil;
 import com.finserv.shopping_cart.model.ProductHelper;
 import com.finserv.shopping_cart.mvpcontractor.ShoppingCartContractor;
 
@@ -33,26 +36,24 @@ public class ShoppingCartPresenterImpl implements ShoppingCartContractor.Shoppin
     @Override
     public void parseandInsertProducts(String jsonString) {
         try {
-            JSONObject obj = new JSONObject(jsonString);
-            JSONArray m_jArry = obj.getJSONArray("formules");
-            ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
-            HashMap<String, String> m_li;
-
-            for (int i = 0; i < m_jArry.length(); i++) {
-                JSONObject jo_inside = m_jArry.getJSONObject(i);
-                Log.d("Details-->", jo_inside.getString("formule"));
-                String formula_value = jo_inside.getString("formule");
-                String url_value = jo_inside.getString("url");
-
-                //Add your values in your `ArrayList` as below:
-                m_li = new HashMap<String, String>();
-                m_li.put("formule", formula_value);
-                m_li.put("url", url_value);
-
-                formList.add(m_li);
+            JSONArray obj = new JSONArray(jsonString);
+            for (int i = 0; i < obj.length(); i++) {
+                JSONObject jo_inside = obj.getJSONObject(i);
+                String uid = jo_inside.getString("uid");
+                String image = jo_inside.getString("image");
+                String name = jo_inside.getString("name");
+                String description = jo_inside.getString("description");
+                int price = jo_inside.getInt("price");
+                String category = jo_inside.getString("category");
+                productHelper.insertProducts(new ProductMasterBO(uid, name, description,
+                        image, price, category));
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
         }
     }
 
