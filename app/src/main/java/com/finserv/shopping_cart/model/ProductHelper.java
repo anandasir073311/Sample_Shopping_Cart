@@ -1,6 +1,7 @@
 package com.finserv.shopping_cart.model;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import com.finserv.shopping_cart.R;
 import com.finserv.shopping_cart.bo.ProductMasterBO;
@@ -36,11 +37,38 @@ public class ProductHelper {
         this.productMasterBO = productMasterBO;
     }
 
-    public void downloadProducts(){
+    public void downloadProducts() {
+        DBUtil db;
+        ProductMasterBO productBO;
+        try {
+            db = new DBUtil(context, context.getString(R.string.db_name));
+            db.createDataBase();
+            db.openDataBase();
+            Cursor cursor = db.selectSQL("Select " + DataMembers.tbl_productMaster_cols + " from "
+                    + DataMembers.tbl_productMaster);
+            if (cursor.getCount() > 0) {
+                setProductMasterBO(new Vector<ProductMasterBO>());
+                while (cursor.moveToNext()) {
+                    productBO = new ProductMasterBO();
+                    productBO.setUid(cursor.getString(0));
+                    productBO.setName(cursor.getString(1));
+                    productBO.setDescription(cursor.getString(2));
+                    productBO.setImage(cursor.getString(3));
+                    productBO.setPrice(cursor.getInt(4));
+                    productBO.setCategory(cursor.getString(5));
+                    getProductMasterBO().add(productBO);
+                }
+            }
+            cursor.close();
+            db.closeDB();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
 
+        }
     }
 
-    public boolean insertProducts(ProductMasterBO productBO){
+    public boolean insertProducts(ProductMasterBO productBO) {
         DBUtil db;
         try {
             db = new DBUtil(context, context.getString(R.string.db_name));

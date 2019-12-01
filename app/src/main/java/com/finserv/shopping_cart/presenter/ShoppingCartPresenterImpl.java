@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Vector;
 
 public class ShoppingCartPresenterImpl implements ShoppingCartContractor.ShoppingCartPresenter {
 
@@ -58,8 +59,23 @@ public class ShoppingCartPresenterImpl implements ShoppingCartContractor.Shoppin
     }
 
     @Override
-    public void fetchProductList(ArrayList<ProductMasterBO> productList) {
-
+    public void fetchProductList() {
+        try{
+            productHelper.downloadProducts();
+            HashMap<String,Vector<ProductMasterBO>> productMap = new HashMap<>();
+            Vector<ProductMasterBO> pList = new Vector<>();
+            for(ProductMasterBO product : productHelper.getProductMasterBO()){
+                if(!productMap.containsKey(product.getCategory())) {
+                    pList = new Vector<>();
+                    productMap.put(product.getCategory(), new Vector<ProductMasterBO>());
+                }
+                pList.add(product);
+                productMap.put(product.getCategory(), pList);
+            }
+            shoppingCartView.updateProductList(productMap);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

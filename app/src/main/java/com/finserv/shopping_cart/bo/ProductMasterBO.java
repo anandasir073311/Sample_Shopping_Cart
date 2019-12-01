@@ -5,6 +5,10 @@ public class ProductMasterBO {
     private String uid, name, description, image, category;
     private int price;
 
+    public ProductMasterBO(){
+
+    }
+
     public ProductMasterBO(String uid, String name, String description, String image, int price, String category){
         this.uid = uid;
         this.name = name;

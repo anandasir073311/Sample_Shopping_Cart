@@ -1,5 +1,6 @@
 package com.finserv.shopping_cart.view;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,10 +8,16 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.finserv.shopping_cart.R;
+import com.finserv.shopping_cart.bo.adapter.ProductHeaderAdapter;
 import com.finserv.shopping_cart.mvpcontractor.ShoppingCartContractor;
 import com.finserv.shopping_cart.bo.ProductMasterBO;
 import com.finserv.shopping_cart.presenter.ShoppingCartPresenterImpl;
@@ -18,6 +25,10 @@ import com.finserv.shopping_cart.presenter.ShoppingCartPresenterImpl;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Vector;
 
 public class ProductListFragment extends Fragment implements ShoppingCartContractor.ShoppingCartView {
 
@@ -29,10 +40,22 @@ public class ProductListFragment extends Fragment implements ShoppingCartContrac
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product, container, false);
 
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(getResources().getString(R.string.product_list));
+        }
+
         shoppingCartPresenterImpl = new ShoppingCartPresenterImpl(getActivity());
         shoppingCartPresenterImpl.setView(this);
 
+        mRecylerViewProductList = view.findViewById(R.id.mRecyclerView);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        mRecylerViewProductList.setLayoutManager(mLayoutManager);
+        mRecylerViewProductList.setItemAnimator(new DefaultItemAnimator());
+
         shoppingCartPresenterImpl.parseandInsertProducts(loadJSONFromAsset());
+        shoppingCartPresenterImpl.fetchProductList();
 
         return view;
     }
@@ -43,8 +66,9 @@ public class ProductListFragment extends Fragment implements ShoppingCartContrac
     }
 
     @Override
-    public void updateProductList(ArrayList<ProductMasterBO> productList) {
-
+    public void updateProductList(HashMap<String, Vector<ProductMasterBO>> productList) {
+        ProductHeaderAdapter adapter = new ProductHeaderAdapter(getContext(), productList);
+        mRecylerViewProductList.setAdapter(adapter);
     }
 
     @Override

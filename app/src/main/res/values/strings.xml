@@ -5,4 +5,7 @@
     <string name="productname">Product Name</string>
     <string name="json_filename">catalog.json</string>
     <string name="db_name">shoppingcart_db.db</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="product_list">Product List</string>
 </resources>

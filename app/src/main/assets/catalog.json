@@ -2,48 +2,48 @@
   {
     "uid": 1,
     "name": "Microwave oven",
-    "image": "",
-    "description": "",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfEXFZo36jRRUlQ7aEvKAspoPoGys6bpPUGDDovIMdr3JQV7zH&s",
+    "description": "21L : Suitable for families with 3 to 4 members\nConvection: Can be used for baking along with grilling, reheating, defrosting and cooking , Power Consumption (Microwave) :1200W ,Power Source :230V / 50Hz ,Output Power (Max) :2350W\nIndian recipes for quick prepration, Easy cleaning of interiors with Ceramic Enamel cavity\nWarranty : 1 year on Product & 5 years on Megnetron & 10 years on Ceramic Cavity\nBrand does NOT provide a starter kit with this product\nControl: Touch Key Pad (Membrane) is sensitive to touch and easy to clean\nChild Lock: Ensures complete safety especially for homes with small children",
     "price": 3000,
     "category": "Electronics"
   },
   {
     "uid": 2,
     "name": "Telvision",
-    "image": "",
-    "description": "",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2cbZEOtECfFueAwIBFpJBDEC8V5sh35cp9DzR0xKe1nv-W_lf&s",
+    "description": "Resolution : HD Ready (1366x768p) | Refresh Rate: 60 hertz | Voltage：100-240V～50/60Hz\nConnectivity: 3 HDMI ports to connect set top box, Blu Ray players, gaming console, 2 USB ports to connect hard drives and other USB devices\nSound: 20 W output | DTS-HD sound\nSmart TV features : | PatchWall with Android TV and Set-Top Box Integration | Chromecast built-in | 700,000+ hrs of Content | Mi Remote with Google voice search | Content across 15 languages | Play Store, YouTube, Play Movies, Play Music | Hotstar, Voot, Sony LIV, Hungama, Zee5, Eros Now, Alt Balaji, Sun NXT, Hooq, TVF, Epic ON, Flickstree| Prime Video coming soon | Mi Remote controls TV, set-top box and smart home devices eg. Mi Air Purifier\nWarranty Information: 1 year warranty on product and 1 year extra on Panel\nInstallation/Wall mounting/demo will be arranged by Amazon Home Services or Xiaomi service partner. For more information, please call Mi support on 1800-103-6286\nEasy returns: This product is eligible for replacement/refund within 10 days of delivery in case of any product defects, damage or features not matching the description provided",
     "price": 5000,
     "category": "Electronics"
   },
   {
     "uid": 3,
     "name": "Vaccum Cleaner",
-    "image": "",
-    "description": "",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Blue_vacuum_cleaner.svg",
+    "description": "Powerful 2000 W Motor I Strong 24 kPa Suction\nDust Bag Full Indicator I Reusable Dust Bag with 4 Ltr Capacity\n360 Degrees Swivel Hose for easily cleaning in any direction\nCrevice Nozzle to clean Hard-To-Reach areas\nVariable Power Setting to choose desired suction level\n5 Metre Extra Long Cord with Automatic Cord Winder\n1 Year Manufacturers Warranty\nFor any query or feedback, Call Toll Free Number : 1800-120-7897",
     "price": 4000,
     "category": "Electronics"
   },
   {
     "uid": 4,
     "name": "Table",
-    "image": "",
-    "description": "",
+    "image": "https://ii1.pepperfry.com/media/catalog/product/m/a/494x544/mariko-four-seater-dining-set-in-wenge-finish-by-mintwud-mariko-four-seater-dining-set-in-wenge-fini-plfvpt.jpg+",
+    "description": "Made of pine wood and mdf colored board it is best suitable for study, laptop table,and laptop riser\nFinely designed and crafted with a natural finish. It is durable and practical. You can use it as a laptop table, reading desk, breakfast tray or a working desk. Its convenient for using in bed, on the floor, sofa, recliner, car and many other circumstances\nEquipped with adjustable legs allowing you to set it at the perfect height.\nDrawer on side to keep CD etc\nPackage Content - 1 Laptop Table",
     "price": 500,
     "category": "Furniture"
   },
   {
     "uid": 5,
     "name": "Chair",
-    "image": "",
-    "description": "",
+    "image": "https://ii1.pepperfry.com/media/catalog/product/a/v/494x544/avian-solid-wood-dining-chair--set-of-2--in-provincial-teak-finish-by-woodsworth-avian-solid-wood-di-zwgsic.jpg",
+    "description": "Material: Teakwood/Sagwan (Hand Crafted) with Premium wooden Melamine Polish\nSolid Wood Sturdy Construction, Foldable and Portable. Easy To Move. No Assembly Required: The Product Is Delivered In a Pre-Assembled State.\nIt Is Hand Crafted, Unique Design, Best for your bedroom, Living room and garden\nDimensions : 89 cm (Height) X 7 cm (Width) X 47 cm (Length). Weight : 4.72Kg\nPackage contents: 1 wooden chair (Made In India by Indian Wooden Artist)",
     "price": 1000,
     "category": "Furniture"
   },
   {
     "uid": 6,
     "name": "Almirah",
-    "image": "",
-    "description": "",
+    "image": "https://rukminim1.flixcart.com/image/416/416/juh9ksw0/cupboard-almirah/f/7/b/stainless-steel-wardrobe-h1-exs-led-godrej-interio-graphite-grey-original-imaffhh68qcam7e6.jpeg?q=70",
+    "description": "Made from selected cloth cover, high quality steel tube and PP Plastic Connectors, this portable storage closet will meet your long term storage needs.\nBeautifully designed and innovatively crafted modern design. With Movable clothes hanging rod and 8 storage shelves offers you enough space both for your longer outfits and folded clothes\nMade from strong and durable material. Powder-coated surface. Portable & light weight easy to carry and put any where.\nDurable, Portable, Sophisticated and Stylish Design. For those who love organized living.\nGreat size of 130 x 45 x 175 which makes it suitable for organizing your small rooms and walk-in closet",
     "price": 1000,
     "category": "Furniture"
   }
