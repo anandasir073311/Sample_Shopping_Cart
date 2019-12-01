@@ -102,8 +102,13 @@ public class ProductDetailFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.btn_addtocart) {
-            productMasterBO.setCount(1);
-            shoppingCartPresenterImpl.updateProductInfo(productMasterBO);
+            if(btnAddtoCart.getText().equals(getString(R.string.add_to_cart))) {
+                productMasterBO.setCount(1);
+                shoppingCartPresenterImpl.updateProductInfo(productMasterBO);
+                btnAddtoCart.setText(getString(R.string.go_to_cart));
+            } else {
+                ((MainActivity)getActivity()).onShoppingCartClicked();
+            }
         }
     }
 

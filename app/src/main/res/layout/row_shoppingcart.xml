@@ -7,53 +7,63 @@
     android:layout_margin="@dimen/menu_item_padding"
     android:background="@drawable/border"
     android:clickable="true"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="@dimen/menu_item_padding">
 
-    <ImageView
-        android:id="@+id/ivImage"
-        android:layout_width="@dimen/shoppingcart_width"
-        android:layout_height="@dimen/shoppingcart_height"
-        android:src="@drawable/watch"
-        card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintEnd_toStartOf="@id/productDetailLayout"
-        card_view:layout_constraintStart_toStartOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/productDetailLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/menu_item_padding"
-        android:paddingRight="@dimen/menu_item_padding"
-        card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintEnd_toStartOf="@id/counter"
-        card_view:layout_constraintStart_toEndOf="@id/ivImage"
+        android:id="@+id/layoutShoppingCart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="@string/productname"
-            android:textColor="@color/textColorSecondary"
-            android:textSize="@dimen/textsize_medium"
-            card_view:layout_constraintBottom_toTopOf="@id/tvPrice"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="@string/productname"
-            android:textColor="@color/textColorSecondary"
-            android:textSize="@dimen/textsize_small"
-            card_view:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="@dimen/shoppingcart_width"
+            android:layout_height="@dimen/shoppingcart_height"
+            android:src="@drawable/watch"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@id/productDetailLayout"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/productDetailLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/menu_item_padding"
+            android:paddingRight="@dimen/menu_item_padding"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toEndOf="@id/ivImage"
+            card_view:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/productname"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/textsize_medium"
+                card_view:layout_constraintBottom_toTopOf="@id/tvPrice"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/productname"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/textsize_small"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -63,14 +73,13 @@
         android:layout_height="wrap_content"
         card_view:layout_constraintBottom_toBottomOf="parent"
         card_view:layout_constraintEnd_toEndOf="parent"
-        card_view:layout_constraintStart_toEndOf="@id/productDetailLayout"
-        card_view:layout_constraintTop_toTopOf="parent">
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@id/layoutShoppingCart">
 
         <Button
             android:id="@+id/decrease"
             android:layout_width="40sp"
             android:layout_height="wrap_content"
-            android:onClick="decreaseInteger"
             android:text="-"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toStartOf="@id/integer_number"
@@ -94,12 +103,22 @@
             android:id="@+id/increase"
             android:layout_width="40sp"
             android:layout_height="wrap_content"
-            android:onClick="increaseInteger"
             android:text="+"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@id/btnDelete"
             card_view:layout_constraintStart_toEndOf="@id/integer_number"
             card_view:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toEndOf="@id/increase"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

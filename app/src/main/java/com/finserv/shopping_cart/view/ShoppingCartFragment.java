@@ -8,11 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -75,7 +73,7 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartContra
             }
         }
 
-        ShoppingCartAdapter adapter = new ShoppingCartAdapter(getContext(), shoppingCartList, (MainActivity)getActivity());
+        ShoppingCartAdapter adapter = new ShoppingCartAdapter(getContext(), shoppingCartList, (MainActivity)getActivity(), shoppingCartPresenterImpl);
         mRecyclerView.setAdapter(adapter);
     }
 
