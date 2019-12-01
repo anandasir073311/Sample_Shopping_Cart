@@ -55,6 +55,8 @@ public class ProductListFragment extends Fragment implements ShoppingCartContrac
         shoppingCartPresenterImpl = new ShoppingCartPresenterImpl(getActivity());
         shoppingCartPresenterImpl.setView(this);
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.home);
+
         mRecylerViewProductList = view.findViewById(R.id.mRecyclerView);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(RecyclerView.VERTICAL);

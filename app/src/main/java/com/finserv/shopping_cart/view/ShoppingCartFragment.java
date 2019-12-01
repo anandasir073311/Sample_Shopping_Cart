@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,8 +38,11 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartContra
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shoppingcart, container, false);
         setHasOptionsMenu(true);
+
         shoppingCartPresenterImpl = new ShoppingCartPresenterImpl(getActivity());
         shoppingCartPresenterImpl.setView(this);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
 
         mRecyclerView = view.findViewById(R.id.mRecyclerView);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());

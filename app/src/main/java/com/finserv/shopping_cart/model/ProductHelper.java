@@ -11,7 +11,10 @@ import com.finserv.shopping_cart.db.datamembers.DataMembers;
 import org.json.JSONException;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Vector;
 
 public class ProductHelper {
@@ -19,6 +22,9 @@ public class ProductHelper {
     private static ProductHelper instance = null;
     private Vector<ProductMasterBO> productMasterBO = new Vector<>();
     private Context context;
+
+    SimpleDateFormat sdfTransactionIDFormat = new SimpleDateFormat("MMddyyyyHHmmssSSS", Locale.ENGLISH);
+    SimpleDateFormat sdfDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 
     public static ProductHelper getInstance(Context context) {
         if (instance == null) {
@@ -102,14 +108,18 @@ public class ProductHelper {
             db.createDataBase();
             db.openDataBase();
 
-            for(ProductMasterBO product : getProductMasterBO()){
-                String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-                String values = getStringQueryParam(currentDateTimeString + product.getUid()/*Unique ID Generation */) + ","
-                        + getStringQueryParam(currentDateTimeString) + ","
-                        + getStringQueryParam(product.getUid()) + ","
-                        + product.getQty();
-                db.insertSQL(DataMembers.tbl_orderMaster, DataMembers.tbl_orderMaster_cols,
-                        values);
+            Calendar cal = Calendar.getInstance();
+            String currentDateTimeString = sdfTransactionIDFormat.format(cal.getTime());
+            String currentDate = sdfDateFormat.format(cal.getTime());
+            for (ProductMasterBO product : getProductMasterBO()) {
+                if (product.getCount() == 1 && product.getQty() > 0) {
+                    String values = getStringQueryParam(currentDateTimeString + product.getUid()/*Unique ID Generation */) + ","
+                            + getStringQueryParam(currentDate) + ","
+                            + getStringQueryParam(product.getUid()) + ","
+                            + product.getQty();
+                    db.insertSQL(DataMembers.tbl_orderMaster, DataMembers.tbl_orderMaster_cols,
+                            values);
+                }
             }
             db.closeDB();
         } catch (Exception e) {

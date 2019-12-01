@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 
@@ -54,6 +55,8 @@ public class ProductDetailFragment extends Fragment implements View.OnClickListe
 
         shoppingCartPresenterImpl = new ShoppingCartPresenterImpl(getActivity());
         shoppingCartPresenterImpl.setView(this);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
 
         txtProductName = view.findViewById(R.id.txtProductName);
         txtProductPrice = view.findViewById(R.id.txtProductPrice);
