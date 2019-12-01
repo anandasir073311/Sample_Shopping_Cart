@@ -3,6 +3,9 @@ package com.finserv.shopping_cart.view;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -39,7 +42,7 @@ public class ProductListFragment extends Fragment implements ShoppingCartContrac
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product, container, false);
-
+        setHasOptionsMenu(true);
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle(getResources().getString(R.string.product_list));
@@ -67,7 +70,7 @@ public class ProductListFragment extends Fragment implements ShoppingCartContrac
 
     @Override
     public void updateProductList(HashMap<String, Vector<ProductMasterBO>> productList) {
-        ProductHeaderAdapter adapter = new ProductHeaderAdapter(getContext(), productList);
+        ProductHeaderAdapter adapter = new ProductHeaderAdapter(getContext(), productList , (MainActivity)getActivity());
         mRecylerViewProductList.setAdapter(adapter);
     }
 
@@ -90,5 +93,25 @@ public class ProductListFragment extends Fragment implements ShoppingCartContrac
             return null;
         }
         return json;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_shoppingcart, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int i = item.getItemId();
+        if (i == android.R.id.home) {
+            onBackButtonClick();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void onBackButtonClick(){
+        ((MainActivity)getActivity()).replaceFragment(this);
     }
 }

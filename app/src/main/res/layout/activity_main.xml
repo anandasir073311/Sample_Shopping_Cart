@@ -6,49 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<androidx.drawerlayout.widget.DrawerLayout-->
+    <!--android:id="@+id/drawer_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/root"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/material_toolbar"
+        app:layout_constraintBottom_toTopOf="@id/fragment_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/fragment_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+    <!--</LinearLayout>-->
 
-        <androidx.drawerlayout.widget.DrawerLayout
-            android:id="@+id/drawer_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <!--<FrameLayout-->
+    <!--android:id="@+id/left_drawer"-->
+    <!--android:layout_width="@dimen/homescreen_textsize"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="start"-->
+    <!--android:background="@color/textColorPrimary"-->
+    <!--android:clickable="true">-->
 
-            <LinearLayout
-                android:id="@+id/root"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+    <!--<fragment-->
+    <!--android:id="@+id/homescreen_fragment"-->
+    <!--android:name="com.finserv.shopping_cart.view.HomescreenListFragment"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
 
-                <include
-                    android:id="@+id/toolbar"
-                    layout="@layout/material_toolbar" />
+    <!--</FrameLayout>-->
 
-                <FrameLayout
-                    android:id="@+id/fragment_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/left_drawer"
-                android:layout_width="@dimen/homescreen_textsize"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                android:background="@color/textColorPrimary"
-                android:clickable="true">
-
-                <fragment
-                    android:id="@+id/homescreen_fragment"
-                    android:name="com.finserv.shopping_cart.view.HomescreenListFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </FrameLayout>
-
-        </androidx.drawerlayout.widget.DrawerLayout>
-    </LinearLayout>
+    <!--</androidx.drawerlayout.widget.DrawerLayout>-->
+    <!--</LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

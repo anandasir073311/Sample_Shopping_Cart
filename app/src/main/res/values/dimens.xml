@@ -16,8 +16,15 @@
 
     <dimen name="menu_item_height">40sp</dimen>
     <dimen name="menu_item_padding">5sp</dimen>
+    <dimen name="detail_screen_padding">15sp</dimen>
     <dimen name="menu_icon_size">15sp</dimen>
 
     <dimen name="cardview_width">150sp</dimen>
     <dimen name="cardview_height">150sp</dimen>
+    <dimen name="product_detail_width">250sp</dimen>
+    <dimen name="product_detail_height">250sp</dimen>
+
+    <dimen name="textsize_header_product_Detail">40sp</dimen>
+    <dimen name="textsize_subheader_product_Detail">20sp</dimen>
+    <dimen name="footer_height">50sp</dimen>
 </resources>

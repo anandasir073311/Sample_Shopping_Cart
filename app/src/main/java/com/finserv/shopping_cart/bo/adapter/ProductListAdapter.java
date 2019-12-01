@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -19,10 +21,12 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     private Vector<ProductMasterBO> listdata;
     Context context;
+    productSelectedListener selectionListener;
 
-    public ProductListAdapter(Context context, Vector<ProductMasterBO> listdata) {
+    public ProductListAdapter(Context context, Vector<ProductMasterBO> listdata, productSelectedListener selectionListener) {
         this.context = context;
         this.listdata = listdata;
+        this.selectionListener = selectionListener;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -42,14 +46,14 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 .dontAnimate()
                 .into(holder.imageView);
         System.out.print("");
-//        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(view.getContext(),"click on item: "+myListData.getDescription(),Toast.LENGTH_LONG).show();
-//            }
-//        });
+        holder.productLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectionListener.onProductSelected(myListData);
+                //Toast.makeText(view.getContext(),"click on item: "+myListData.getName(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
-
 
     @Override
     public int getItemCount() {
@@ -59,12 +63,16 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
         public TextView textView;
-//        public RelativeLayout relativeLayout;
+        public ConstraintLayout productLayout;
         public ViewHolder(View itemView) {
             super(itemView);
             this.imageView = (ImageView) itemView.findViewById(R.id.ivImage);
             this.textView = (TextView) itemView.findViewById(R.id.tvTitle);
-//            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout);
+            productLayout = (ConstraintLayout) itemView.findViewById(R.id.productLayout);
         }
+    }
+
+    public interface productSelectedListener {
+        void onProductSelected(ProductMasterBO productBO);
     }
 }  

@@ -1,15 +1,18 @@
 package com.finserv.shopping_cart.bo;
 
-public class ProductMasterBO {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ProductMasterBO implements Parcelable {
 
     private String uid, name, description, image, category;
     private int price;
 
-    public ProductMasterBO(){
+    public ProductMasterBO() {
 
     }
 
-    public ProductMasterBO(String uid, String name, String description, String image, int price, String category){
+    public ProductMasterBO(String uid, String name, String description, String image, int price, String category) {
         this.uid = uid;
         this.name = name;
         this.description = description;
@@ -65,4 +68,40 @@ public class ProductMasterBO {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    // Parcelling part
+    public ProductMasterBO(Parcel in) {
+        uid = in.readString();
+        name = in.readString();
+        description = in.readString();
+        description = in.readString();
+        image = in.readString();
+        price = in.readInt();
+        category = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return hashCode();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(uid);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(image);
+        dest.writeInt(price);
+        dest.writeString(category);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public ProductMasterBO createFromParcel(Parcel in) {
+            return new ProductMasterBO(in);
+        }
+
+        public ProductMasterBO[] newArray(int size) {
+            return new ProductMasterBO[size];
+        }
+    };
 }

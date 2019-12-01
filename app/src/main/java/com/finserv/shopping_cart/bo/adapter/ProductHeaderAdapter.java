@@ -20,11 +20,13 @@ public class ProductHeaderAdapter extends RecyclerView.Adapter<ProductHeaderAdap
 
     Context context;
     private HashMap<String, Vector<ProductMasterBO>> listdata;
+    ProductListAdapter.productSelectedListener selectionListener;
 
     // RecyclerView recyclerView;       
-    public ProductHeaderAdapter(Context context, HashMap<String, Vector<ProductMasterBO>> listdata) {
+    public ProductHeaderAdapter(Context context, HashMap<String, Vector<ProductMasterBO>> listdata, ProductListAdapter.productSelectedListener selectionListener) {
         this.context = context;
         this.listdata = listdata;
+        this.selectionListener = selectionListener;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -45,7 +47,7 @@ public class ProductHeaderAdapter extends RecyclerView.Adapter<ProductHeaderAdap
         holder.recyclerViewList.setLayoutManager(mLayoutManager);
         holder.recyclerViewList.setItemAnimator(new DefaultItemAnimator());
 
-        ProductListAdapter adapter = new ProductListAdapter(context, myList);
+        ProductListAdapter adapter = new ProductListAdapter(context, myList, selectionListener);
         holder.recyclerViewList.setAdapter(adapter);
     }
 
