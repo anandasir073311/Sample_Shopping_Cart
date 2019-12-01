@@ -56,6 +56,8 @@ public class ProductHelper {
                     productBO.setImage(cursor.getString(3));
                     productBO.setPrice(cursor.getInt(4));
                     productBO.setCategory(cursor.getString(5));
+                    productBO.setCount(0);
+                    productBO.setQty(0);
                     getProductMasterBO().add(productBO);
                 }
             }

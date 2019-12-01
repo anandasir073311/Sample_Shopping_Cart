@@ -104,4 +104,22 @@ public class ProductMasterBO implements Parcelable {
             return new ProductMasterBO[size];
         }
     };
+
+    private int count , qty;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
 }

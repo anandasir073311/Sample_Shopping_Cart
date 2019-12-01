@@ -8,12 +8,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,6 +39,8 @@ public class ProductListFragment extends Fragment implements ShoppingCartContrac
 
     RecyclerView mRecylerViewProductList;
     ShoppingCartPresenterImpl shoppingCartPresenterImpl;
+    int mCartItemCount = 0;
+    TextView textCartItemCount;
 
     @Nullable
     @Override
@@ -69,14 +73,25 @@ public class ProductListFragment extends Fragment implements ShoppingCartContrac
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        shoppingCartPresenterImpl.fetchProductInfo();
+    }
+
+    @Override
     public void updateProductList(HashMap<String, Vector<ProductMasterBO>> productList) {
         ProductHeaderAdapter adapter = new ProductHeaderAdapter(getContext(), productList , (MainActivity)getActivity());
         mRecylerViewProductList.setAdapter(adapter);
     }
 
     @Override
-    public void updateProductInfo(ProductMasterBO productBO) {
-
+    public void updateProductCount(Vector<ProductMasterBO> productList) {
+        for(ProductMasterBO productMasterBO : productList){
+            if(productMasterBO.getCount() != 0){
+                mCartItemCount = mCartItemCount + 1;
+            }
+        }
+        getActivity().invalidateOptionsMenu();
     }
 
     public String loadJSONFromAsset() {
@@ -99,6 +114,36 @@ public class ProductListFragment extends Fragment implements ShoppingCartContrac
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_shoppingcart, menu);
+
+        final MenuItem menuItem = menu.findItem(R.id.shoppingcart);
+
+        View actionView = MenuItemCompat.getActionView(menuItem);
+        textCartItemCount = (TextView) actionView.findViewById(R.id.cart_badge);
+
+        setupBadge();
+
+        actionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onOptionsItemSelected(menuItem);
+            }
+        });
+    }
+
+    private void setupBadge() {
+
+        if (textCartItemCount != null) {
+            if (mCartItemCount == 0) {
+                if (textCartItemCount.getVisibility() != View.GONE) {
+                    textCartItemCount.setVisibility(View.GONE);
+                }
+            } else {
+                textCartItemCount.setText(String.valueOf(Math.min(mCartItemCount, 99)));
+                if (textCartItemCount.getVisibility() != View.VISIBLE) {
+                    textCartItemCount.setVisibility(View.VISIBLE);
+                }
+            }
+        }
     }
 
     @Override

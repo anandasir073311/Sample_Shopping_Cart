@@ -1,12 +1,8 @@
 package com.finserv.shopping_cart.presenter;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.util.Log;
 
-import com.finserv.shopping_cart.R;
 import com.finserv.shopping_cart.bo.ProductMasterBO;
-import com.finserv.shopping_cart.db.DBUtil;
 import com.finserv.shopping_cart.model.ProductHelper;
 import com.finserv.shopping_cart.mvpcontractor.ShoppingCartContractor;
 
@@ -14,7 +10,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -60,12 +55,14 @@ public class ShoppingCartPresenterImpl implements ShoppingCartContractor.Shoppin
 
     @Override
     public void fetchProductList() {
-        try{
-            productHelper.downloadProducts();
-            HashMap<String,Vector<ProductMasterBO>> productMap = new HashMap<>();
+        try {
+            if (productHelper.getProductMasterBO() == null || productHelper.getProductMasterBO().size() == 0) {
+                productHelper.downloadProducts();
+            }
+            HashMap<String, Vector<ProductMasterBO>> productMap = new HashMap<>();
             Vector<ProductMasterBO> pList = new Vector<>();
-            for(ProductMasterBO product : productHelper.getProductMasterBO()){
-                if(!productMap.containsKey(product.getCategory())) {
+            for (ProductMasterBO product : productHelper.getProductMasterBO()) {
+                if (!productMap.containsKey(product.getCategory())) {
                     pList = new Vector<>();
                     productMap.put(product.getCategory(), new Vector<ProductMasterBO>());
                 }
@@ -73,13 +70,25 @@ public class ShoppingCartPresenterImpl implements ShoppingCartContractor.Shoppin
                 productMap.put(product.getCategory(), pList);
             }
             shoppingCartView.updateProductList(productMap);
-        } catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void fetchProductInfo(String productID) {
+    public void updateProductInfo(ProductMasterBO productBO) {
+        for(ProductMasterBO product : productHelper.getProductMasterBO()){
+            if(product.getUid().equals(productBO.getUid())){
+                product.setQty(productBO.getQty());
+                product.setCount(productBO.getCount());
+            }
+        }
+        shoppingCartView.updateProductCount(productHelper.getProductMasterBO());
+    }
 
+    @Override
+    public void fetchProductInfo() {
+        shoppingCartView.updateProductCount(productHelper.getProductMasterBO());
     }
 }

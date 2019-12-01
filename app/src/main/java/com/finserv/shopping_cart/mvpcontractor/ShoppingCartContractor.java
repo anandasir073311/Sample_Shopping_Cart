@@ -12,11 +12,12 @@ public interface ShoppingCartContractor {
         void setView(ShoppingCartView shoppingCartView);
         void parseandInsertProducts(String json);
         void fetchProductList();
-        void fetchProductInfo(String productID);
+        void updateProductInfo(ProductMasterBO productBO);
+        void fetchProductInfo();
     }
 
     interface ShoppingCartView {
         void updateProductList(HashMap<String, Vector<ProductMasterBO>> productList);
-        void updateProductInfo(ProductMasterBO productBO);
+        void updateProductCount(Vector<ProductMasterBO> productList);
     }
 }
