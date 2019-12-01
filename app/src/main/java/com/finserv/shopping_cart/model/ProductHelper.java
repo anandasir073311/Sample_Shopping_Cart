@@ -10,6 +10,8 @@ import com.finserv.shopping_cart.db.datamembers.DataMembers;
 
 import org.json.JSONException;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Vector;
 
 public class ProductHelper {
@@ -84,6 +86,31 @@ public class ProductHelper {
                     + getStringQueryParam(productBO.getCategory());
             db.insertSQL(DataMembers.tbl_productMaster, DataMembers.tbl_productMaster_cols,
                     values);
+            db.closeDB();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+        return true;
+    }
+
+    public boolean insertShoppingCart() {
+        DBUtil db;
+        try {
+            db = new DBUtil(context, context.getString(R.string.db_name));
+            db.createDataBase();
+            db.openDataBase();
+
+            for(ProductMasterBO product : getProductMasterBO()){
+                String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+                String values = getStringQueryParam(currentDateTimeString + product.getUid()/*Unique ID Generation */) + ","
+                        + getStringQueryParam(currentDateTimeString) + ","
+                        + getStringQueryParam(product.getUid()) + ","
+                        + product.getQty();
+                db.insertSQL(DataMembers.tbl_orderMaster, DataMembers.tbl_orderMaster_cols,
+                        values);
+            }
             db.closeDB();
         } catch (Exception e) {
             e.printStackTrace();

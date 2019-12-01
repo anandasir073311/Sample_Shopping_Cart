@@ -14,6 +14,7 @@ public interface ShoppingCartContractor {
         void fetchProductList();
         void updateProductInfo(ProductMasterBO productBO);
         void fetchProductInfo();
+        boolean insertShoppingCart();
     }
 
     interface ShoppingCartView {

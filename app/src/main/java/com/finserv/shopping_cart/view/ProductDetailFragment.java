@@ -62,13 +62,13 @@ public class ProductDetailFragment extends Fragment implements View.OnClickListe
         btnAddtoCart = view.findViewById(R.id.btn_addtocart);
         btnAddtoCart.setOnClickListener(this);
         txtProductName.setText(productMasterBO.getName());
-        txtProductPrice.setText(productMasterBO.getPrice() + "");
+        txtProductPrice.setText(getString(R.string.price) + " : " + productMasterBO.getPrice() + "");
         txtProductDescription.setText(productMasterBO.getDescription());
 
         qtyArray = getResources().getStringArray(R.array.qty_array);
         spnQty = (Spinner) view.findViewById(R.id.spnQty);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, qtyArray);
+                android.R.layout.simple_list_item_1, qtyArray);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnQty.setAdapter(dataAdapter);
         spnQty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

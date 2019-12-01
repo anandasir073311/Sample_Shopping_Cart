@@ -131,10 +131,10 @@
             android:layout_height="wrap_content"
             android:textColor="@color/textColorPrimary"
             android:background="@color/colorPrimary"
+            android:layout_margin="@dimen/menu_item_padding"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="@dimen/menu_item_padding"
             android:text="@string/add_to_cart"
             android:textAllCaps="false" />
 

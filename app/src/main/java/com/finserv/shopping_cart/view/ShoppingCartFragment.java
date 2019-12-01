@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,6 +45,19 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartContra
         mLayoutManager.setOrientation(RecyclerView.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        btnSave = view.findViewById(R.id.btn_save);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(shoppingCartPresenterImpl.insertShoppingCart()){
+                    Toast.makeText(getContext(), getString(R.string.saved), Toast.LENGTH_LONG).show();
+                    ((MainActivity)getActivity()).onHomescreenReturn();
+                } else {
+                    Toast.makeText(getContext(), getString(R.string.problem_in_saving), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         return view;
     }

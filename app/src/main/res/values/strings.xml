@@ -13,6 +13,9 @@
     <string name="go_to_cart">Go To Cart</string>
     <string name="delete">Delete</string>
     <string name="price">Price</string>
+    <string name="save">Save</string>
+    <string name="saved">Order Generated Successfully</string>
+    <string name="problem_in_saving">Some Problem in Saving Data. Please Try Again Later</string>
 
     <string name="prompt">Select</string>
     <string-array name="qty_array">

@@ -91,4 +91,24 @@ public class ShoppingCartPresenterImpl implements ShoppingCartContractor.Shoppin
     public void fetchProductInfo() {
         shoppingCartView.updateProductCount(productHelper.getProductMasterBO());
     }
+
+    @Override
+    public boolean insertShoppingCart() {
+        try {
+            if(productHelper.insertShoppingCart()){
+                clearOrder();
+                return true;
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private void clearOrder(){
+        for (ProductMasterBO product : productHelper.getProductMasterBO()) {
+            product.setCount(0);
+            product.setCount(0);
+        }
+    }
 }

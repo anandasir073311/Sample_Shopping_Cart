@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-//        content_frame = findViewById(R.id.root);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -48,44 +45,9 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-//        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,
-//                drawerLayout, /* DrawerLayout object */
-//                R.string.open, R.string.close) {
-//            public void onDrawerClosed(View view) {
-//                supportInvalidateOptionsMenu();
-//            }
-//
-//            public void onDrawerOpened(View drawerView) {
-//                supportInvalidateOptionsMenu();
-//            }
-//
-//
-//            @Override
-//            public void onDrawerSlide(View drawerView, float slideOffset) {
-//                super.onDrawerSlide(drawerView, slideOffset);
-//
-//                float moveFactor = (drawerView.getWidth() * slideOffset);
-//
-//                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//                if (imm != null && imm.isActive())
-//                    imm.hideSoftInputFromWindow(drawerView.getWindowToken(), 0);
-//
-//                content_frame.setTranslationX(moveFactor);
-//            }
-//        };
-//
-//        mDrawerToggle.syncState();
-//        drawerLayout.addDrawerListener(mDrawerToggle);
-
-        fragmentContainer = findViewById(R.id.fragment_content);
-
-        Fragment productFragment = new ProductListFragment();
         fragmentManager = getSupportFragmentManager();
-        fragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_content, productFragment, DataMembers.fragment_ProductList)
-                .commit();
-
+        fragmentContainer = findViewById(R.id.fragment_content);
+        onHomescreenReturn();
     }
 
     @Override
@@ -110,16 +72,18 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
     }
 
     public void replaceFragment(Fragment fragment) {
-
         if(fragment.getTag().equals(DataMembers.fragment_ShoppingCart) || fragment.getTag().equals(DataMembers.fragment_ProductDetail)) {
-            Fragment frag = new ProductListFragment();
-            fragmentManager
-                    .beginTransaction()
-                    .replace(R.id.fragment_content, frag, frag.getClass().getName())
-                    .commit();
+            onHomescreenReturn();
         } else {
             finish();
         }
+    }
 
+    public void onHomescreenReturn(){
+        Fragment productFragment = new ProductListFragment();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_content, productFragment, DataMembers.fragment_ProductList)
+                .commit();
     }
 }

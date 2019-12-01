@@ -60,7 +60,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         holder.btnDecrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myListData.setQty((myListData.getQty() - 1) <= 0 ? 0 : myListData.getQty());
+                myListData.setQty((myListData.getQty() - 1) <= 0 ? 0 : (myListData.getQty() - 1));
                 myListData.setCount(myListData.getQty() > 0 ? 1 : 0);
                 shoppingCartPresenterImpl.updateProductInfo(myListData);
             }
