@@ -26,7 +26,7 @@
     <dimen name="product_detail_width">250sp</dimen>
     <dimen name="product_detail_height">250sp</dimen>
 
-    <dimen name="textsize_header_product_Detail">40sp</dimen>
+    <dimen name="textsize_header_product_Detail">30sp</dimen>
     <dimen name="textsize_subheader_product_Detail">20sp</dimen>
     <dimen name="footer_height">50sp</dimen>
 </resources>
