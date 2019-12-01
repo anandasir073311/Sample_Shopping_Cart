@@ -13,11 +13,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 
@@ -103,14 +101,9 @@ public class ProductDetailFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if(id == R.id.btn_addtocart){
-            if(productMasterBO.getCount() == 0) {
-                productMasterBO.setCount(1);
-                shoppingCartPresenterImpl.updateProductInfo(productMasterBO);
-            } else{
-                Toast.makeText(getContext(), "Item Already Added", Toast.LENGTH_LONG).show();
-            }
-
+        if (id == R.id.btn_addtocart) {
+            productMasterBO.setCount(1);
+            shoppingCartPresenterImpl.updateProductInfo(productMasterBO);
         }
     }
 
@@ -139,9 +132,8 @@ public class ProductDetailFragment extends Fragment implements View.OnClickListe
         if (i == android.R.id.home) {
             onBackButtonClick();
             return true;
-        }
-        else if (i == R.id.shoppingcart) {
-
+        } else if (i == R.id.shoppingcart) {
+            ((MainActivity)getActivity()).onShoppingCartClicked();
             return true;
         }
         return super.onOptionsItemSelected(item);

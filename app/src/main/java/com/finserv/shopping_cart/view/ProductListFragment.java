@@ -152,6 +152,9 @@ public class ProductListFragment extends Fragment implements ShoppingCartContrac
         if (i == android.R.id.home) {
             onBackButtonClick();
             return true;
+        } else if (i == R.id.shoppingcart) {
+            ((MainActivity)getActivity()).onShoppingCartClicked();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

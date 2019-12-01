@@ -20,9 +20,10 @@ import android.widget.Toast;
 import com.finserv.shopping_cart.R;
 import com.finserv.shopping_cart.bo.ProductMasterBO;
 import com.finserv.shopping_cart.bo.adapter.ProductListAdapter;
+import com.finserv.shopping_cart.bo.adapter.ShoppingCartAdapter;
 import com.finserv.shopping_cart.db.datamembers.DataMembers;
 
-public class MainActivity extends AppCompatActivity implements ProductListAdapter.productSelectedListener {
+public class MainActivity extends AppCompatActivity implements ProductListAdapter.productSelectedListener, ShoppingCartAdapter.productSelectedListener {
 
     FrameLayout fragmentContainer;
     DrawerLayout drawerLayout;
@@ -100,15 +101,17 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
                 .commit();
     }
 
+    public void onShoppingCartClicked() {
+        ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_content, shoppingCartFragment, DataMembers.fragment_ShoppingCart)
+                .commit();
+    }
+
     public void replaceFragment(Fragment fragment) {
 
-        if(fragment.getTag().equals(DataMembers.fragment_ShoppingCart)){
-            Fragment frag = new ProductDetailFragment();
-            fragmentManager
-                    .beginTransaction()
-                    .replace(R.id.fragment_content, frag, frag.getClass().getName())
-                    .commit();
-        } else if(fragment.getTag().equals(DataMembers.fragment_ProductDetail)) {
+        if(fragment.getTag().equals(DataMembers.fragment_ShoppingCart) || fragment.getTag().equals(DataMembers.fragment_ProductDetail)) {
             Fragment frag = new ProductListFragment();
             fragmentManager
                     .beginTransaction()

@@ -13,6 +13,8 @@
     <dimen name="circularview_border">5sp</dimen>
     <dimen name="circularview_width">70sp</dimen>
     <dimen name="circularview_height">70sp</dimen>
+    <dimen name="shoppingcart_width">50sp</dimen>
+    <dimen name="shoppingcart_height">50sp</dimen>
 
     <dimen name="menu_item_height">40sp</dimen>
     <dimen name="menu_item_padding">5sp</dimen>
