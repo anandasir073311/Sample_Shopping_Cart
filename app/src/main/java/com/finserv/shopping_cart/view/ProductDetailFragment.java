@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,13 +20,14 @@ import com.bumptech.glide.Glide;
 import com.finserv.shopping_cart.R;
 import com.finserv.shopping_cart.bo.ProductMasterBO;
 
-public class ProductDetailFragment extends Fragment {
+public class ProductDetailFragment extends Fragment implements View.OnClickListener {
 
     ProductMasterBO productMasterBO;
     TextView txtProductName;
     TextView txtProductPrice;
     TextView txtProductDescription;
     ImageView imageView;
+    Button btnAddtoCart;
 
     @Nullable
     @Override
@@ -40,7 +42,7 @@ public class ProductDetailFragment extends Fragment {
         txtProductPrice = view.findViewById(R.id.txtProductPrice);
         txtProductDescription = view.findViewById(R.id.txtProductDescription);
         imageView = view.findViewById(R.id.imageView);
-
+        btnAddtoCart = view.findViewById(R.id.btn_addtocart);
         txtProductName.setText(productMasterBO.getName());
         txtProductPrice.setText(productMasterBO.getPrice() + "");
         txtProductDescription.setText(productMasterBO.getDescription());
@@ -52,6 +54,14 @@ public class ProductDetailFragment extends Fragment {
                 .into(imageView);
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if(id == R.id.btn_addtocart){
+
+        }
     }
 
     @Override

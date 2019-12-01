@@ -9,6 +9,7 @@
     <string name="close">Close</string>
     <string name="product_list">Product List</string>
     <string name="shopping_cart">Shopping Cart</string>
+    <string name="add_to_cart">Add To Cart</string>
 
     <string name="prompt">Select</string>
     <string-array name="qty_array">
